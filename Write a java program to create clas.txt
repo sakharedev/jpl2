@@ -1,0 +1,156 @@
+Write a java program to create class car,truck and motorcycle which extends the vehicle 
+class (attribute registration_number, color, type of vehicle) with their own attribute like 
+make,CC and fuel type. Input data from the user and print all the details.
+
+
+
+
+
+import java.util.Scanner;
+
+class Vehicle {
+    protected String registrationNumber;
+    protected String color;
+    protected String typeOfVehicle;
+
+    public Vehicle(String registrationNumber, String color, String typeOfVehicle) {
+        this.registrationNumber = registrationNumber;
+        this.color = color;
+        this.typeOfVehicle = typeOfVehicle;
+    }
+
+    public void printDetails() {
+        System.out.println("Registration Number: " + registrationNumber);
+        System.out.println("Color: " + color);
+        System.out.println("Type of Vehicle: " + typeOfVehicle);
+    }
+}
+
+class Car extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Car(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+class Truck extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Truck(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+class Motorcycle extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Motorcycle(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter details for Car:");
+        System.out.print("Registration Number: ");
+        String carRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String carColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String carType = scanner.nextLine();
+        System.out.print("Make: ");
+        String carMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int carCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String carFuelType = scanner.nextLine();
+
+        Car car = new Car(carRegNumber, carColor, carType, carMake, carCC, carFuelType);
+
+        System.out.println("\nEnter details for Truck:");
+        System.out.print("Registration Number: ");
+        String truckRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String truckColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String truckType = scanner.nextLine();
+        System.out.print("Make: ");
+        String truckMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int truckCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String truckFuelType = scanner.nextLine();
+
+        Truck truck = new Truck(truckRegNumber, truckColor, truckType, truckMake, truckCC, truckFuelType);
+
+        System.out.println("\nEnter details for Motorcycle:");
+        System.out.print("Registration Number: ");
+        String motorcycleRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String motorcycleColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String motorcycleType = scanner.nextLine();
+        System.out.print("Make: ");
+        String motorcycleMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int motorcycleCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String motorcycleFuelType = scanner.nextLine();
+
+        Motorcycle motorcycle = new Motorcycle(motorcycleRegNumber, motorcycleColor, motorcycleType, motorcycleMake, motorcycleCC, motorcycleFuelType);
+
+        scanner.close();
+
+        System.out.println("\nDetails of Car:");
+        car.printDetails();
+        System.out.println("\nDetails of Truck:");
+        truck.printDetails();
+        System.out.println("\nDetails of Motorcycle:");
+        motorcycle.printDetails();
+    }
+}

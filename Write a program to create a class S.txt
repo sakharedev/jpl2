@@ -1,0 +1,42 @@
+Write a program to create a class Student2 along with two method getData(),printData() to 
+get the value through argument and display the data in printData. Create the two objects s1,
+s2 to declare and access the values from class STtest
+
+
+
+class Student2 {
+    private String name;
+    private int rollNumber;
+    
+    // Method to set data
+    public void getData(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+    }
+}
+
+public class STtest {
+    public static void main(String[] args) {
+        // Creating objects of Student2 class
+        Student2 s1 = new Student2();
+        Student2 s2 = new Student2();
+        
+        // Setting data for s1
+        s1.getData("John", 101);
+        // Printing data for s1
+        System.out.println("Data for Student 1:");
+        s1.printData();
+        
+        // Setting data for s2
+        s2.getData("Alice", 102);
+        // Printing data for s2
+        System.out.println("\nData for Student 2:");
+        s2.printData();
+    }
+}

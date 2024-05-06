@@ -1,0 +1,97 @@
+import java.util.Random;
+
+public class MultiThreadApplication {
+
+    public static void main(String[] args) {
+        // Create and start threads
+        NumberGenerator generator = new NumberGenerator();
+        Thread generatorThread = new Thread(generator);
+
+        SquareCalculator squareCalculator = new SquareCalculator(generator);
+        Thread squareThread = new Thread(squareCalculator);
+
+        CubeCalculator cubeCalculator = new CubeCalculator(generator);
+        Thread cubeThread = new Thread(cubeCalculator);
+
+        generatorThread.start();
+        squareThread.start();
+        cubeThread.start();
+    }
+}
+
+class NumberGenerator implements Runnable {
+    private Random random = new Random();
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                int number = random.nextInt(100);
+                System.out.println("Generated number: " + number);
+                Thread.sleep(1000);
+
+                if (number % 2 == 0) {
+                    synchronized (this) {
+                        this.notifyAll(); // Notify square calculator thread
+                    }
+                } else {
+                    synchronized (this) {
+                        this.notifyAll(); // Notify cube calculator thread
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class SquareCalculator implements Runnable {
+    private NumberGenerator generator;
+
+    public SquareCalculator(NumberGenerator generator) {
+        this.generator = generator;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                synchronized (generator) {
+                    generator.wait(); // Wait for notification from generator thread
+                }
+                int number = generator.getLastGeneratedNumber();
+                if (number % 2 == 0) {
+                    System.out.println("Square of " + number + ": " + (number * number));
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class CubeCalculator implements Runnable {
+    private NumberGenerator generator;
+
+    public CubeCalculator(NumberGenerator generator) {
+        this.generator = generator;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                synchronized (generator) {
+                    generator.wait(); // Wait for notification from generator thread
+                }
+                int number = generator.getLastGeneratedNumber();
+                if (number % 2 != 0) {
+                    System.out.println("Cube of " + number + ": " + (number * number * number));
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

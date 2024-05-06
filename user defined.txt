@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class OddEvenChecker {
+
+    // Function to check if a number is odd or even
+    public static String checkOddEven(int num) {
+        if (num % 2 == 0) {
+            return "Even";
+        } else {
+            return "Odd";
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input from the user
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        // Call the user-defined function to check if the number is odd or even
+        String result = checkOddEven(number);
+
+        // Display the result
+        System.out.println("The number " + number + " is " + result);
+        
+        scanner.close();
+    }
+}

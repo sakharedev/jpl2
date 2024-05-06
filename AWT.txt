@@ -1,0 +1,65 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+class NumberComparisonFrame extends JFrame implements ActionListener {
+    // Declaring Objects
+    JLabel number1Label = new JLabel("Number1:");
+    JLabel number2Label = new JLabel("Number2:");
+    JTextField number1TextField = new JTextField();
+    JTextField number2TextField = new JTextField();
+    JButton compareButton = new JButton("Compare");
+
+    NumberComparisonFrame() {
+        setTitle("Number Comparison");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Setting Layout
+        setLayout(null);
+
+        // Setting Bounds
+        number1Label.setBounds(20, 20, 80, 30);
+        number1TextField.setBounds(100, 20, 150, 30);
+        number2Label.setBounds(20, 60, 80, 30);
+        number2TextField.setBounds(100, 60, 150, 30);
+        compareButton.setBounds(100, 100, 100, 30);
+
+        // Adding Components to the Frame
+        add(number1Label);
+        add(number1TextField);
+        add(number2Label);
+        add(number2TextField);
+        add(compareButton);
+
+        // Adding ActionListener to the Button
+        compareButton.addActionListener(this);
+
+        // Display the Frame
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        // Get numbers from text fields
+        String num1Str = number1TextField.getText();
+        String num2Str = number2TextField.getText();
+
+        // Convert numbers to integers
+        try {
+            int num1 = Integer.parseInt(num1Str);
+            int num2 = Integer.parseInt(num2Str);
+
+            // Compare numbers
+            if (num1 == num2) {
+                JOptionPane.showMessageDialog(this, "Numbers are equal!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Numbers are unequal!");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter valid integers!");
+        }
+    }
+
+    public static void main(String[] args) {
+        new NumberComparisonFrame();
+    }
+}

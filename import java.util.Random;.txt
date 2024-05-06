@@ -1,0 +1,46 @@
+import java.util.Random;
+
+class NumberGenerator extends Thread {
+    private Random random = new Random();
+
+    public void run() {
+        while (true) {
+            int number = random.nextInt(100); // Generating random integer between 0 and 99
+            System.out.println("Generated number: " + number);
+
+            if (number % 2 == 0) {
+                Main.squareThread.computeSquare(number);
+            } else {
+                Main.cubeThread.computeCube(number);
+            }
+
+            try {
+                Thread.sleep(1000); // Wait for 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class SquareThread extends Thread {
+    public void computeSquare(int number) {
+        System.out.println("Square of " + number + ": " + (number * number));
+    }
+}
+
+class CubeThread extends Thread {
+    public void computeCube(int number) {
+        System.out.println("Cube of " + number + ": " + (number * number * number));
+    }
+}
+
+public class Main {
+    static SquareThread squareThread = new SquareThread();
+    static CubeThread cubeThread = new CubeThread();
+
+    public static void main(String[] args) {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        numberGenerator.start();
+    }
+}

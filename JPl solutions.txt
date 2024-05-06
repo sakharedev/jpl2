@@ -1,0 +1,287 @@
+Write a Java program that accepts four integer from the user and prints equal if all four are 
+equal, and not equal otherwise
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter four integers:");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        int num3 = scanner.nextInt();
+        int num4 = scanner.nextInt();
+
+        if (num1 == num2 && num2 == num3 && num3 == num4) {
+            System.out.println("Equal");
+        } else {
+            System.out.println("Not Equal");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+Write a program to create a class Student2 along with two method getData(),printData() to 
+get the value through argument and display the data in printData. Create the two objects s1,
+s2 to declare and access the values from class STtest
+
+
+
+class Student2 {
+    private String name;
+    private int rollNumber;
+    
+    // Method to set data
+    public void getData(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+    }
+}
+
+public class STtest {
+    public static void main(String[] args) {
+        // Creating objects of Student2 class
+        Student2 s1 = new Student2();
+        Student2 s2 = new Student2();
+        
+        // Setting data for s1
+        s1.getData("John", 101);
+        // Printing data for s1
+        System.out.println("Data for Student 1:");
+        s1.printData();
+        
+        // Setting data for s2
+        s2.getData("Alice", 102);
+        // Printing data for s2
+        System.out.println("\nData for Student 2:");
+        s2.printData();
+    }
+}
+
+
+
+PS 1: 
+Write a java program to create class car,truck and motorcycle which extends the vehicle 
+class (attribute registration_number, color, type of vehicle) with their own attribute like 
+make,CC and fuel type. Input data from the user and print all the details.
+
+
+
+
+
+import java.util.Scanner;
+
+class Vehicle {
+    protected String registrationNumber;
+    protected String color;
+    protected String typeOfVehicle;
+
+    public Vehicle(String registrationNumber, String color, String typeOfVehicle) {
+        this.registrationNumber = registrationNumber;
+        this.color = color;
+        this.typeOfVehicle = typeOfVehicle;
+    }
+
+    public void printDetails() {
+        System.out.println("Registration Number: " + registrationNumber);
+        System.out.println("Color: " + color);
+        System.out.println("Type of Vehicle: " + typeOfVehicle);
+    }
+}
+
+class Car extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Car(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+class Truck extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Truck(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+class Motorcycle extends Vehicle {
+    private String make;
+    private int CC;
+    private String fuelType;
+
+    public Motorcycle(String registrationNumber, String color, String typeOfVehicle, String make, int CC, String fuelType) {
+        super(registrationNumber, color, typeOfVehicle);
+        this.make = make;
+        this.CC = CC;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Make: " + make);
+        System.out.println("CC: " + CC);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter details for Car:");
+        System.out.print("Registration Number: ");
+        String carRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String carColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String carType = scanner.nextLine();
+        System.out.print("Make: ");
+        String carMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int carCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String carFuelType = scanner.nextLine();
+
+        Car car = new Car(carRegNumber, carColor, carType, carMake, carCC, carFuelType);
+
+        System.out.println("\nEnter details for Truck:");
+        System.out.print("Registration Number: ");
+        String truckRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String truckColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String truckType = scanner.nextLine();
+        System.out.print("Make: ");
+        String truckMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int truckCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String truckFuelType = scanner.nextLine();
+
+        Truck truck = new Truck(truckRegNumber, truckColor, truckType, truckMake, truckCC, truckFuelType);
+
+        System.out.println("\nEnter details for Motorcycle:");
+        System.out.print("Registration Number: ");
+        String motorcycleRegNumber = scanner.nextLine();
+        System.out.print("Color: ");
+        String motorcycleColor = scanner.nextLine();
+        System.out.print("Type of Vehicle: ");
+        String motorcycleType = scanner.nextLine();
+        System.out.print("Make: ");
+        String motorcycleMake = scanner.nextLine();
+        System.out.print("CC: ");
+        int motorcycleCC = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.print("Fuel Type: ");
+        String motorcycleFuelType = scanner.nextLine();
+
+        Motorcycle motorcycle = new Motorcycle(motorcycleRegNumber, motorcycleColor, motorcycleType, motorcycleMake, motorcycleCC, motorcycleFuelType);
+
+        scanner.close();
+
+        System.out.println("\nDetails of Car:");
+        car.printDetails();
+        System.out.println("\nDetails of Truck:");
+        truck.printDetails();
+        System.out.println("\nDetails of Motorcycle:");
+        motorcycle.printDetails();
+    }
+}
+
+
+
+
+
+Write a java program to create a class Student with data „name, city and age‟ along with 
+method addData and printData to input and display the data. Create the two objects s1 ,s2 
+to declare and access the values
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private String city;
+    private int age;
+    
+    // Method to input data
+    public void addData(String name, String city, int age) {
+        this.name = name;
+        this.city = city;
+        this.age = age;
+    }
+    
+    // Method to display data
+    public void printData() {
+        System.out.println("Name: " + name);
+        System.out.println("City: " + city);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of Student class
+        Student s1 = new Student();
+        Student s2 = new Student();
+        
+        // Adding data for s1
+        s1.addData("John", "New York", 20);
+        // Printing data for s1
+        System.out.println("Data for Student 1:");
+        s1.printData();
+        
+        // Adding data for s2
+        s2.addData("Alice", "London", 22);
+        // Printing data for s2
+        System.out.println("\nData for Student 2:");
+        s2.printData();
+    }
+}
